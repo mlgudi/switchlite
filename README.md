@@ -29,6 +29,9 @@ You need Python 64-bit installed with the pywin32 library.
 
 **You must also set RuneLite to include display names in the window title for this script to work. This can be found in the RuneLite plugin configuration.**
 
+![image](https://github.com/mlgudi/switchlite/assets/46876568/a731bae1-6e90-44e5-899a-70c00c336da4)
+
+
 ### OBS Setup
 
 You need to set your Python installation in OBS, load the script, and create the scene/source.
