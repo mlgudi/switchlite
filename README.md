@@ -7,7 +7,7 @@ Only tested with Python 3.10 and OBS 29.1. Not a clue if this is compatible with
 
 ### Why
 
-Auto scene switcher requires a new scene for every logged in account you wish to record. This is a pain, especially if you change account names and regularly have to update your triggers/scenes.
+Auto scene switcher requires a new scene and window capture for every OSRS account you wish to record. This is a pain, especially if you change account names and regularly have to update your triggers/scenes.
 
 This script requires only one scene and one window capture source. It updates the target of the window capture rather than switching between scenes. It records any currently selected RuneLite (if it is logged in).
 
