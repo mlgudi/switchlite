@@ -13,6 +13,8 @@ This script requires only one scene and one window capture source. It updates th
 
 ### Pre-requisites
 
+Windows only.
+
 You need Python 64-bit installed with the pywin32 library.
 
 1. **Install Python**: If you don't have it, download and install Python from [python.org](https://www.python.org/downloads/).
