@@ -3,7 +3,11 @@ OBS script for switching between multiple RuneLite clients without setting up a 
 
 Once set up, you will never need to create new scenes/sources for additional accounts. With the script active, OBS should detect and switch to your currently focused RuneLite client (if you are logged in).
 
-Only tested with Python 3.10 and OBS 29.1. Not a clue if this is compatible with other versions.
+
+https://github.com/mlgudi/switchlite/assets/46876568/be2994aa-1433-47a1-985a-168d61bf6c46
+
+
+Only tested with Python 3.10 and OBS 29.1. No clue if it is compatible with other versions. Windows only.
 
 ### Why
 
@@ -12,8 +16,6 @@ Auto scene switcher requires a new scene and window capture for every OSRS accou
 This script requires only one scene and one window capture source. It updates the target of the window capture rather than switching between scenes. It records any currently selected RuneLite (if it is logged in).
 
 ### Pre-requisites
-
-Windows only.
 
 You need Python 64-bit installed with the pywin32 library.
 
