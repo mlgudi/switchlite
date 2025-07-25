@@ -3,57 +3,76 @@ OBS script for switching between multiple RuneLite clients without setting up a 
 
 Once set up, you will never need to create new scenes/sources for additional accounts. With the script active, OBS should detect and switch to your currently focused RuneLite client (if you are logged in).
 
+![image](/img/switchlite_example.mp4)
 
-https://github.com/mlgudi/switchlite/assets/46876568/be2994aa-1433-47a1-985a-168d61bf6c46
-
-
-Only tested with Python 3.10 and OBS 29.1. No clue if it is compatible with other versions. Windows only.
+The new version has been lightly tested with OBS version 30 on Windows 10 and 11. If you encounter problems, please [submit an issue](https://github.com/mlgudi/switchlite/issues).
 
 ### Why
 
 Auto scene switcher requires a new scene and window capture for every OSRS account you wish to record. This is a pain, especially if you change account names and regularly have to update your triggers/scenes.
 
-This script requires only one scene and one window capture source. It updates the target of the window capture rather than switching between scenes. It records any currently selected RuneLite (if it is logged in).
+This script requires only one scene and one window capture source. An application audio source can also be set up.
 
-### Pre-requisites
+It updates the target of the window/audio capture, rather than switching to a different scene. It records any currently focused and logged in RuneLite client.
 
-You need Python 64-bit installed with the pywin32 library.
+## Setup
 
-1. **Install Python**: If you don't have it, download and install Python from [python.org](https://www.python.org/downloads/).
+Getting Switchlite up and running takes very little time. Everything you might need to do is listed below, including instructions for installing the script in OBS.
 
-2. **Install pywin32**: Open Command Prompt and run the following command:
-    ```bash
-    pip install pywin32
-    ```
-3. **Download the script**: Clone or download the [OBS script](https://github.com/mlgudi/switchlite/blob/main/switchlite.py).
+### Configuring RuneLite
 
-**You must also set RuneLite to include display names in the window title for this script to work. This can be found in the RuneLite plugin configuration.**
+For Switchlite to function, you must enable RuneLite's "Show display name in title" option.
 
-![image](https://github.com/mlgudi/switchlite/assets/46876568/a731bae1-6e90-44e5-899a-70c00c336da4)
+This can be found in the main RuneLite plugin configuration:
 
+![image](/img/show_display_name_in_title.png)
 
-### OBS Setup
+### Creating Compatible Sources
 
-You need to set your Python installation in OBS, load the script, and create the scene/source.
+Switchlite supports only two kinds of OBS sources: Window Capture and Application Audio Capture.
 
-1. **Open OBS**
+Both can be added by right-clicking inside the "Sources" panel, then hovering the "Add" option:
 
-2. **Set Python installation**: Open Tools -> Scripts and go to the Python Settings tab. Ensure your Python installation path is selected. If it isn't, find where Python was installed and enter it.
+![image](/img/add_sources.png)
 
-3. **Load the script**: Go back to the Scripts tab and click + in the bottom left. Locate the script (switchlite.py) and select it.
+**Window Match Priority**
 
-4. **Create your RuneLite source**: Create a **window capture** source in a scene of your choosing. Set the Window Match Priority to "Match title, otherwise find window of same executable"
+To ensure your sources can be used by Switchlite, select "Window title must match" for the "Window Match Priority" property of the source(s):
 
-5. **Set the source in the script UI**: Open Tools -> Scripts and select switchlite.py. On the right, select your window capture as the RuneLite source. If you have an application audio capture for RuneLite, you can select that for the audio.
+![image](/img/window_match_priority.png)
 
-6. **Activate**: Ensure the "Active" checkbox is checked, as well as the "Application Audio" checkbox if you also have an application audio capture source.
+**Capture Audio (BETA)**
 
-With all that done, you should be good to go. If you have any problems, [drop me a tweet](https://twitter.com/MLGudi) and I will try to reply. Alternatively, submit an issue here, but I am not terribly active. If your issue is with Python/pywin32 installation, please ask ChatGPT to help you troubleshoot, as it will be much more helpful.
+Recent versions of OBS include a "Capture Audio (BETA)" property for window capture sources.
 
-### Toggle Hotkey
+I recommend **disabling** this option and, instead, manually creating an application audio capture source. It doesn't seem to reliably update when the target window is modified by Switchlite.
 
-You can set a hotkey to toggle the active state of the script, but it will not be reflected in the Tools -> Scripts UI.
+### Switchlite Setup
 
-Set the hotkey in the OBS settings menu under hotkeys. It is called "Toggle RuneLite Switcher".
+With your sources set up, installing Switchlite only takes a few seconds. Do the following:
 
-To toggle it off indefinitely and across OBS sessions, use the Scripts -> Tools UI and uncheck the "Active" checkbox instead.
+1. **Download the script**: Download [switchlite.lua](switchlite.lua) and save it anywhere. Ideally, somewhere you won't lose or accidentally delete it.
+
+2. **Open the Scripts UI**: In the menu bar at the top of OBS, select Tools -> Scripts. A small scripts UI will appear.
+
+![image](/img/tools_scripts.png)
+
+3. **Load the script**: Click the + button in the bottom left of the scripts UI and select switchlite.lua.
+
+![image](/img/scripts_ui.png)
+
+4. **Select your sources and enable**: Select your RuneLite window capture source from the "RuneLite Source" drop down, and application audio capture source from the "RuneLite Audio Source" drop down if capturing audio. Finally, check the "Enable Switching" checkbox - as well as the "Enable Audio Switching" if you have an audio source.
+
+![image](/img/script_ui_setup.png)
+
+With all that done, you should be good to go. Clicking between two RuneLite clients - both logged in - should result in the targeted window being captured.
+
+If you have any problems, [drop me a tweet](https://x.com/MLGudi) or [submit an issue](https://github.com/mlgudi/switchlite/issues).
+
+### Linux
+
+Most OSRS players/content creators run Windows, including myself, so it was written to work on Windows.
+
+I do have a version of Switchlite functional on Linux Mint 22.1, but I haven't thoroughly tested it and didn't want to bloat a minimal script for one imaginary Linux user.
+
+If there is anyone who might actually make use of it, let me know.
