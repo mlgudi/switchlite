@@ -3,7 +3,7 @@ OBS script for switching between multiple RuneLite clients without setting up a 
 
 Once set up, you will never need to create new scenes/sources for additional accounts. With the script active, OBS should detect and switch to your currently focused RuneLite client (if you are logged in).
 
-![image](/img/switchlite_example.mp4)
+![image](/img/switchlite_example.gif)
 
 The new version has been lightly tested with OBS version 30 on Windows 10 and 11. If you encounter problems, please [submit an issue](https://github.com/mlgudi/switchlite/issues).
 
